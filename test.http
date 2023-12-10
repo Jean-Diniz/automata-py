@@ -1,4 +1,4 @@
-POST http://localhost:8081/dfa
+POST http://localhost:8000/dfa
 Accept: application/json
 Content-Type: application/json
 
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8081/dpda
+POST http://localhost:8000/dpda
 Accept: application/json
 Content-Type: application/json
 
@@ -37,7 +37,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8081/nfa
+POST http://localhost:8000/nfa
 Accept: application/json
 Content-Type: application/json
 

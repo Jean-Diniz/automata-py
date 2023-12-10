@@ -1,0 +1,97 @@
+POST http://localhost:8081/dfa
+Accept: application/json
+Content-Type: application/json
+
+{
+  "states": ["q0", "q1", "q2"],
+  "input_symbols": ["0", "1"],
+  "transitions": {
+        "q0": {"0": "q0", "1": "q1"},
+        "q1": {"0": "q0", "1": "q2"},
+        "q2": {"0": "q2", "1": "q1"}
+    },
+  "initial_state": "q0",
+  "final_states": ["q1"],
+  "input_w": "01"
+}
+
+###
+POST http://localhost:8081/dpda
+Accept: application/json
+Content-Type: application/json
+
+{
+  "states": ["q0", "q1", "q2", "q3"],
+  "input_symbols": ["a", "b"],
+  "stack_symbols": ["0", "1"],
+  "transitions": {
+  "q0": {
+    "a": {
+      "0": [
+        "q1",
+        [
+          "1",
+          "0"
+        ]
+      ]
+    }
+  },
+  "q1": {
+    "a": {
+      "1": [
+        "q1",
+        [
+          "1",
+          "1"
+        ]
+      ]
+    },
+    "b": {
+      "1": [
+        "q2",
+        ""
+      ]
+    }
+  },
+  "q2": {
+    "b": {
+      "1": [
+        "q2",
+        ""
+      ]
+    },
+    "": {
+      "0": [
+        "q3",
+        [
+          "0"
+        ]
+      ]
+    }
+  }
+},
+  "initial_state": "q0",
+  "initial_stack_symbol": "0",
+  "final_states": ["q3"],
+  "input_w": "aab"
+}
+
+###
+
+POST http://localhost:8081/nfa
+Accept: application/json
+Content-Type: application/json
+
+{
+  "states": ["q0", "q1", "q2"],
+  "input_symbols": ["a", "b"],
+  "transitions": {
+        "q0": {"a": {}},
+        "q1": {"0": "q0", "1": "q2"},
+        "q2": {"0": "q2", "1": "q1"}
+    },
+  "initial_state": "q0",
+  "final_states": ["q1"],
+  "input_w": "01"
+}
+
